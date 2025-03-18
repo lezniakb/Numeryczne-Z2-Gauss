@@ -1,3 +1,8 @@
 import macierz as m
+import eliminacja_Gaussa as g
 
-m.wczytanie_macierzy("1")
+macierz = m.wczytanie_macierzy("1")
+for wiersz in macierz:
+    print(wiersz)
+print("")
+g.Gauss(macierz)
