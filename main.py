@@ -1,7 +1,7 @@
 import macierz as m
 import eliminacja_Gaussa as g
 
-macierz = m.wczytanie_macierzy("2")
+macierz = m.wczytanie_macierzy("10")
 for wiersz in macierz:
     print(wiersz)
 print("")
