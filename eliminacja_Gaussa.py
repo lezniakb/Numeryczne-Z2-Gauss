@@ -23,15 +23,15 @@ def Gauss(macierz):
 
             # Jeżeli w żadnym z wierszy nie znajdzie odpowiedniego współczynnika, to kończymy program
             if abs(macierz[i][i]) < dokladnosc:
-                print("BLAD" + str(i))
-                return False
+                print("BLAD - dzielenie przez 0")
+                return -1
         for j in range(i + 1, n):
             m = - macierz[j][i] / macierz[i][i]
             for k in range(n + 1):
                 macierz[j][k] = macierz[j][k] + m * macierz[i][k]
 
-    for wiersz in macierz:
-        print(wiersz)
+    # for wiersz in macierz:
+    #     print(wiersz)
 
     # Odwrotne wyznaczanie niewiadomych
     for o in range(n - 1, -1, -1):
@@ -40,7 +40,7 @@ def Gauss(macierz):
                 print("BLAD - układ nieoznaczony")
             else:
                 print("BLAD - układ sprzeczny")
-            return False
+            return -1
         # Przyjmujemy jako s ostatnią wartość z wiersza
         s = macierz[o][n]
         # print(s)
@@ -50,5 +50,6 @@ def Gauss(macierz):
         # Wyznaczamy ostateczną wartość niewiadomej
         X[o] = s / macierz[o][o]
 
-    print("Wyniki:")
-    print(X)
+    # print("Wyniki:")
+    # print(X)
+    return X
