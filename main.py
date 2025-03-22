@@ -29,11 +29,14 @@ def wczytanie_macierzy(nazwa_pliku):
 # Początek programu
 while True:
     plik = input("Podaj plik, w którym znajduje się macierz: ") + ".txt"
-    if os.path.exists(plik):
-        break
-    plik = input("Podano błędną nazwę pliku, spróbuj ponownie: ") + ".txt"
+    sciezka = os.path.join("macierze", plik)  # Połączenie katalogu "dane" z nazwą pliku
 
-macierz = wczytanie_macierzy(plik)
+    if os.path.exists(sciezka):  # Sprawdzenie, czy plik istnieje
+        break
+
+    print("Podano błędną nazwę pliku, spróbuj ponownie.")
+
+macierz = wczytanie_macierzy(sciezka)
 print("Wybrana macierz: ")
 for wiersz in macierz:
     print(wiersz)
@@ -43,7 +46,7 @@ wyniki = g.Gauss(macierz)
 if wyniki != -1:
     print("Otrzymane wyniki: ")
     for index, wynik in enumerate(wyniki):
-        print("x" + str(index + 1) + ": " + str(wynik))
+        print(f"x{(index + 1)}: {wynik:.3f}")
 
 
 # o co chodzi z "użytkownik ma mieć możliwość wyboru ilości równań w trakcie pracy programu"
