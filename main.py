@@ -5,7 +5,7 @@ def wczytanie_macierzy(nazwa_pliku):
     # Dopisujemy txt do nazwy pliku
     # nazwa_pliku += ".txt"
     # Otwieramy plik tylko do odczytu 'r'
-    with open(nazwa_pliku, 'r') as plik:
+    with open(nazwa_pliku, "r") as plik:
         # Tworzymy listę 'rownania', która zawiera wszystkie wiersze w pliku
         rownania = plik.readlines()
 
@@ -14,34 +14,43 @@ def wczytanie_macierzy(nazwa_pliku):
     if n > 10:
         print("BŁĄD: Przekroczono ilość 10 równań\n"
               "Podana ilość równań: " + str(n))
+        exit(0)
 
     # Deklarujemy macierz
     macierz = []
 
     # Przechodzimy przez wszystkie równania, zamieniamy je ze stringa na float i odpowiednio dodajemy do naszej macierzy
     for rownanie in rownania:
-        wartosci = list(map(float, rownanie.split()))
+        czesci = rownanie.split()  # podzial na czesci
+        wartosci_float = map(float, czesci)  # zamiana na typ float
+        wartosci = list(wartosci_float)  # zamiana mapy wartosci na liste
         # Współczynniki równań
         macierz.append(wartosci)
 
     return macierz
 
 # Początek programu
-while True:
-    plik = input("Podaj plik, w którym znajduje się macierz: ") + ".txt"
-    sciezka = os.path.join("macierze", plik)  # Połączenie katalogu "dane" z nazwą pliku
+# zabezpieczenie bez uzycia "break" zgodnie z instrukcją
+czyIstnieje = False
+while czyIstnieje != True:
+    plik = input("Podaj numer zadania: ")
+    plik += ".txt"
+    sciezka = os.path.join("macierze", plik)  # połączenie katalogu zawierajacymi macierze z nazwą pliku
 
-    if os.path.exists(sciezka):  # Sprawdzenie, czy plik istnieje
-        break
+    # jesli plik istnieje to zakoncz petle i idz dalej
+    if os.path.exists(sciezka):
+        czyIstnieje = True
+    else:
+        print("Podano błędną nazwę pliku (numer zadania), spróbuj ponownie.")
 
-    print("Podano błędną nazwę pliku, spróbuj ponownie.")
-
+# wyswietl macierz
 macierz = wczytanie_macierzy(sciezka)
 print("Wybrana macierz: ")
 for wiersz in macierz:
     print(wiersz)
 print("")
 
+# znajdz rozwiazania przy uzyciu metody gaussa
 wyniki = g.Gauss(macierz)
 if wyniki != -1:
     print("Otrzymane wyniki: ")
