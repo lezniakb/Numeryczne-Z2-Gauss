@@ -10,10 +10,12 @@ def Gauss(macierz):
     # Wiem, że pojebane idk jak to w komentarzu wytłumaczyć :sob:
 
     # Doprowadzamy macierz do postaci trójkątnej
+    # dla kazdego rzedu w macierzy
     for i in range(n - 1):
-        # Sprawdzamy, czy dzielnik jest różny od zera
+        # jesli element jest mniejszy niz nasza dokladnosc
         if abs(macierz[i][i]) < dokladnosc:
-            # jeżeli tak to szukamy w kolejnych wierszach współczynnika, który jest różny od 0 i zamieniamy kolejnością
+            # to szukamy w dalszych wierszach wspolczynnika, ktory jest rozny 0
+            # jesli taki znajdziemy to zamieniamy je miejscami
             for l in range(i + 1, n):
                 if abs(macierz[l][i]) > dokladnosc:
                     for m in range(n + 1):
@@ -21,9 +23,10 @@ def Gauss(macierz):
                         macierz[i][m] = macierz[l][m]
                         macierz[l][m] = temp
 
-            # Jeżeli w żadnym z wierszy nie znajdzie odpowiedniego współczynnika, to kończymy program
+            # jezeli w zadnym z wierszy nie zostanie znaleziony poszukiwany wspolczynnik to wyswietlany jest blad
             if abs(macierz[i][i]) < dokladnosc:
-                print("BLAD - dzielenie przez 0")
+                print("Błąd: dzielenie przez 0. Macierz nie została rozwiązana.")
+                # zwroc -1 jako kod blednego zakonczenia funkcji
                 return -1
         for j in range(i + 1, n):
             m = - macierz[j][i] / macierz[i][i]
@@ -37,9 +40,9 @@ def Gauss(macierz):
     for o in range(n - 1, -1, -1):
         if abs(macierz[o][o]) < dokladnosc:
             if abs(macierz[o][o + 1]) < dokladnosc:
-                print("BLAD - układ nieoznaczony")
+                print("Błąd: Wykryto układ nieoznaczony. Macierz nie została rozwiązana.")
             else:
-                print("BLAD - układ sprzeczny")
+                print("Błąd: Wykryto układ sprzeczny. Macierz nie została rozwiązana.")
             return -1
         # Przyjmujemy jako s ostatnią wartość z wiersza
         s = macierz[o][n]
