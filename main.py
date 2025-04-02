@@ -48,7 +48,6 @@ macierz = wczytanie_macierzy(sciezka)
 print("Wybrana macierz: ")
 for wiersz in macierz:
     print(wiersz)
-print("")
 
 # znajdz rozwiazania przy uzyciu metody gaussa
 wyniki = g.Gauss(macierz)

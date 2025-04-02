@@ -28,14 +28,16 @@ def Gauss(macierz):
                 print("Błąd: dzielenie przez 0. Macierz nie została rozwiązana.")
                 # zwroc -1 jako kod blednego zakonczenia funkcji
                 return -1
+        # dla wiersza i przetwarzane sa wszystkie wiersze ponizej
         for j in range(i + 1, n):
             m = - macierz[j][i] / macierz[i][i]
             for k in range(n + 1):
                 macierz[j][k] = macierz[j][k] + m * macierz[i][k]
 
-    # for wiersz in macierz:
-    #     print(wiersz)
-
+    print("\nMacierz po sprowadzeniu do postaci trójkątnej górnej")
+    for wiersz in macierz:
+        print(wiersz)
+    print("")
     # Odwrotne wyznaczanie niewiadomych
     for o in range(n - 1, -1, -1):
         if abs(macierz[o][o]) < dokladnosc:
@@ -46,6 +48,7 @@ def Gauss(macierz):
             return -1
         # Przyjmujemy jako s ostatnią wartość z wiersza
         s = macierz[o][n]
+        print("DEBUG:", macierz[o][n])
         # print(s)
         for p in range(n - 1, o, -1):
             # Przchodząc po kolei przez elementy w wierszu wyznaczamy wynik po lewej stronie równania
