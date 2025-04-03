@@ -8,7 +8,7 @@ The repository contains an algorithm for solving "n" linear equations with "n" u
 
 ## Dodatkowe informacje na temat zadania
 Maksymalna ilość równań może być ograniczona z góry (np. 10), ale skonstruowany algorytm ma być uniwersalny, a użytkownik ma mieć możliwość wyboru ilości równań w trakcie pracy programu. Należy zapewnić możliwość wygodnego wprowadzania współczynników układu równań poprzez wczytywanie ich z pliku.
-</ br>W przypadku metod eliminacji program musi automatycznie wybierać element podstawowy i wykrywać sytuacje, kiedy układ jest sprzeczny albo nieoznaczony.
+<br />W przypadku metod eliminacji program musi automatycznie wybierać element podstawowy i wykrywać sytuacje, kiedy układ jest sprzeczny albo nieoznaczony.
 
 ### Funkcjonalność
 - [x] 1. Wczytywanie macierzy z pliku i zaimplementowanie algorytmu Gaussa
