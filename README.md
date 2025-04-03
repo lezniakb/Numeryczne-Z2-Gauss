@@ -12,5 +12,5 @@ Maksymalna ilość równań może być ograniczona z góry (np. 10), ale skonstr
 
 ### Funkcjonalność
 - [x] 1. Wczytywanie macierzy z pliku i zaimplementowanie algorytmu Gaussa
-- [x] 1.1 Weryfikacja poprawności macierzy oraz sprawdzenie czy układ jest nieoznaczony lub sprzeczny
-- [x] 2. Zapisywanie macierzy wprowadzonej przez użytkownika do pliku 
+- [x] 2. Weryfikacja poprawności macierzy oraz sprawdzenie czy układ jest nieoznaczony lub sprzeczny
+- [x] 3. Zapisywanie macierzy wprowadzonej przez użytkownika do pliku 
