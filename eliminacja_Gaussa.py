@@ -48,8 +48,6 @@ def Gauss(macierz):
             return -1
         # Przyjmujemy jako s ostatnią wartość z wiersza
         s = macierz[o][n]
-        print("DEBUG:", macierz[o][n])
-        # print(s)
         for p in range(n - 1, o, -1):
             # Przchodząc po kolei przez elementy w wierszu wyznaczamy wynik po lewej stronie równania
             s = s - macierz[o][p] * X[p]
