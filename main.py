@@ -30,26 +30,37 @@ def wczytanie_macierzy(nazwa_pliku):
     return macierz
 
 def zapisz_macierz():
-    iloscRownan = int(input("Podaj ilosc rownan: "))
+    warunek = True
+    while warunek:
+        iloscRownan = int(input("Podaj ilosc rownan: "))
+        if iloscRownan < 2 or iloscRownan > 10:
+            print("Podana ilość równań się nie zgadza! Powinno znajdować się w przedziale [2, 10]")
+        else:
+            warunek = False
+
     rownania = []
     for i in range(1, iloscRownan+1):
-        while True:
+        warunek = True
+        while warunek:
             wartosci = input(f"Podaj wartosci w {i} wierszu (po przecinku): ").split(",")
-            if len(wartosci) == iloscRownan+1:
-                break
-            print(f"Ilość wartości w wierszu się nie zgadza! Powinno być: {iloscRownan+1}")
+            if len(wartosci) != iloscRownan+1:
+                print(f"Ilość wartości w wierszu się nie zgadza! Powinno być: {iloscRownan+1}")
+            else:
+                warunek = False
         rownania.append(wartosci)
         print("Obecna postać macierzy:")
         for j in rownania:
             print(j)
     # zapisz do pliku
-    while True:
+    warunek = True
+    while warunek:
         numerPliku = input("Podaj numer zadania: ")
         numerPliku += ".txt"
         sciezka = os.path.join("macierze", numerPliku)
-        if os.path.exists(sciezka) == False:
-            break
-        print("Taki plik już istnieje! Wprowadź inną nazwę.")
+        if os.path.exists(sciezka) == True:
+            print("Taki plik już istnieje! Wprowadź inną nazwę.")
+        else:
+            warunek = False
 
     with open(sciezka, "w") as plik:
         for wiersz in rownania:
@@ -90,7 +101,7 @@ while True:
         if wyniki != -1:
             print("Otrzymane wyniki: ")
             for index, wynik in enumerate(wyniki):
-                print(f"x{(index + 1)}: {wynik:.3f}")
+                print(f"x{(index + 1)}: {wynik}")
     elif wybor == "2":
         zapisz_macierz()
     elif wybor == "3":
