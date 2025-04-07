@@ -12,8 +12,8 @@ def wczytanie_macierzy(nazwa_pliku):
     n = len(rownania)
     # Sprawdzamy ilość równań
     if n > 10:
-        print("BŁĄD: Przekroczono ilość 10 równań\n"
-              "Podana ilość równań: " + str(n))
+        print(f"BŁĄD: Przekroczono ilość 10 równań\n"
+              f"Podana ilość równań: {n}")
         exit(0)
 
     # Deklarujemy macierz
@@ -32,7 +32,7 @@ def wczytanie_macierzy(nazwa_pliku):
 def zapisz_macierz():
     warunek = True
     while warunek:
-        iloscRownan = int(input("Podaj ilosc rownan: "))
+        iloscRownan = int(input("Podaj ilość równań: "))
         if iloscRownan < 2 or iloscRownan > 10:
             print("Podana ilość równań się nie zgadza! Powinno znajdować się w przedziale [2, 10]")
         else:
@@ -110,5 +110,3 @@ while True:
     else:
         print("Podano niewłaściwą opcję!")
     input("Wciśnij Enter aby kontynuować...")
-
-# czy w przypadku wyniku "0.4999999999999999" trzba zaokrąglić
